@@ -4,7 +4,7 @@ interface Props {
   title: string;
 }
 
-const Guide: React.FC<Props> = (props) => {
+export const Guide: React.FC<Props> = (props) => {
   const { title } = props;
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -25,5 +25,3 @@ const Guide: React.FC<Props> = (props) => {
     </div>
   );
 };
-
-export default Guide;
