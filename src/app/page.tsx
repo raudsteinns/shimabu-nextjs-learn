@@ -1,17 +1,15 @@
-import { Footer } from "@/components/Footer";
-import { Guide } from "@/components/Guide";
-import { Links } from "@/components/Links";
-import { NextLogo } from "@/components/NextLogo";
+"use client";
 
-export const Home: React.FC = () => {
+import { Footer } from "@/components/Footer";
+import { Main } from "@/components/Main";
+
+const Index: React.FC = () => {
   return (
     <>
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <Guide title="index" />
-        <NextLogo />
-        <Links />
-      </main>
+      <Main page="index" />
       <Footer />
     </>
   );
 };
+
+export default Index;
