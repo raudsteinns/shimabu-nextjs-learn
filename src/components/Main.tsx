@@ -1,4 +1,3 @@
-import React from "react";
 import { Headline } from "@/components/Headline";
 import { NextLogo } from "@/components/NextLogo";
 import { Links } from "@/components/Links";
