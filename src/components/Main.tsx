@@ -1,7 +1,7 @@
 import React from "react";
-import { Headline } from "./Headline";
-import { NextLogo } from "./NextLogo";
-import { Links } from "./Links";
+import { Headline } from "@/components/Headline";
+import { NextLogo } from "@/components/NextLogo";
+import { Links } from "@/components/Links";
 
 interface Props {
   page: string;
