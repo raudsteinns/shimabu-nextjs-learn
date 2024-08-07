@@ -6,6 +6,20 @@ import { Main } from "@/components/Main";
 import { useCallback, useEffect, useRef } from "react";
 
 const Index: React.FC = () => {
+  // エラーの発生する記述
+  // const bodyRef = useRef(document.body);
+  // useEffect(() => {
+  //   const body = bodyRef.current;
+  //   console.log("マウント時");
+  //   body.style.backgroundColor = "lightblue";
+
+  //   return () => {
+  //     console.log("アンマウント時");
+  //     body.style.backgroundColor = "";
+  //   };
+  // }, []);
+
+  // エラーの発生しない記述
   useEffect(() => {
     const body = document.body;
     console.log("マウント時");
