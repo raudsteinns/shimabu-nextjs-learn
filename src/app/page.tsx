@@ -13,7 +13,7 @@ const Index: React.FC = () => {
     body.style.backgroundColor = "lightblue";
 
     return () => {
-      console.log("アンマウント時");
+      console.log("アンマウント時s");
       body.style.backgroundColor = "";
     };
   }, []);
