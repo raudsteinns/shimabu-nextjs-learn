@@ -6,9 +6,8 @@ import { Main } from "@/components/Main";
 import { useCallback, useEffect, useRef } from "react";
 
 const Index: React.FC = () => {
-  const bodyRef = useRef(document.body);
   useEffect(() => {
-    const body = bodyRef.current;
+    const body = document.body;
     console.log("マウント時");
     body.style.backgroundColor = "lightblue";
 
