@@ -9,6 +9,7 @@ const Index: React.FC = () => {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState<string[]>([]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -47,13 +48,15 @@ const Index: React.FC = () => {
     setIsShow((prevIsShow) => !prevIsShow);
   }, [setIsShow]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    if (newValue.length > 5) {
-      return;
-    }
-    setText(e.target.value.trim());
-  }, []);
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if (prevArray.some((item) => item === text)) {
+        console.log("既に存在します");
+        return prevArray;
+      }
+      return [...prevArray, text];
+    });
+  }, [setArray, text]);
 
   return (
     <>
@@ -62,6 +65,12 @@ const Index: React.FC = () => {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
       <input type="text" value={text} onChange={handleChange} />
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map((item, i) => (
+          <li key={i}>{item}</li>
+        ))}
+      </ul>
       <Main page="index" />
       <Footer />
     </>
