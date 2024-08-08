@@ -3,44 +3,37 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Main } from "@/components/Main";
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Index: React.FC = () => {
-  // エラーの発生する記述
-  const bodyRef = useRef<HTMLElement | null>(null);
+  const [count, setCount] = useState(1);
 
+  const bodyRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     bodyRef.current = document.body;
     const body = bodyRef.current;
-    console.log("マウント時");
+    // console.log("マウント時");
     if (body) {
       body.style.backgroundColor = "lightblue";
     }
 
     return () => {
-      console.log("アンマウント時");
+      // console.log("アンマウント時");
       if (body) {
         body.style.backgroundColor = "";
       }
     };
   }, []);
 
-  const foo = 1;
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      console.log((e.target as HTMLAnchorElement).href);
-      e.preventDefault();
-      alert(foo);
-    },
-    []
-  );
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setCount((prevCount) => prevCount + 1);
+  };
 
   return (
     <>
       <Header />
-      <a href="/about" onClick={handleClick}>
-        ボタン
-      </a>
+      <h1>{count}</h1>
+      <button onClick={handleClick}>ボタン</button>
       <Main page="index" />
       <Footer />
     </>
