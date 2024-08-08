@@ -10,6 +10,14 @@ const Index: React.FC = () => {
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
 
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    if (newValue.length > 5) {
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
   const bodyRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     console.log("foo");
