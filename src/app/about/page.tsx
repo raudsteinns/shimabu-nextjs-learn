@@ -36,9 +36,11 @@ const About: React.FC<LayoutProps> = (props) => {
       <input type="text" value={text} onChange={handleChange} />
       <button onClick={handleAdd}>追加</button>
       <ul>
-        {array.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+        {Array.isArray(array) && array.length > 0 ? (
+          array.map((item, i) => <li key={i}>{item}</li>)
+        ) : (
+          <li>No items found</li>
+        )}
       </ul>
       <Main page="about" />
       <Footer />

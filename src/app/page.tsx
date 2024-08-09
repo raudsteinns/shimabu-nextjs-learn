@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Main } from "@/components/Main";
 
-interface LayoutProps {
+export interface LayoutProps {
   count: number;
   isShow: boolean;
   handleClick: () => void;
@@ -36,9 +36,11 @@ const Index: React.FC<LayoutProps> = (props) => {
       <input type="text" value={text} onChange={handleChange} />
       <button onClick={handleAdd}>追加</button>
       <ul>
-        {array.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+        {array && array.length > 0 ? (
+          array.map((item, i) => <li key={i}>{item}</li>)
+        ) : (
+          <li>No items found</li>
+        )}
       </ul>
       <Main page="index" />
       <Footer />
