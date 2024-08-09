@@ -3,14 +3,29 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Main } from "@/components/Main";
-import { useBgLightblue } from "@/hooks/useBgLightblue";
-import { useCounter } from "@/hooks/useCounter";
-import { useInputArray } from "@/hooks/useInputArray";
 
-const Index: React.FC = () => {
-  const [count, isShow, handleClick, handleDisplay] = useCounter();
-  const [text, array, handleChange, handleAdd] = useInputArray();
-  useBgLightblue();
+interface LayoutProps {
+  count: number;
+  isShow: boolean;
+  handleClick: () => void;
+  handleDisplay: () => void;
+  text: string;
+  array: string[];
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleAdd: () => void;
+}
+
+const Index: React.FC<LayoutProps> = (props) => {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props;
 
   return (
     <>
