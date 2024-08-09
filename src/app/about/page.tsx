@@ -16,7 +16,16 @@ interface LayoutProps {
 }
 
 const About: React.FC<LayoutProps> = (props) => {
-  const { count, isShow, handleClick, handleDisplay, text, array, handleChange, handleAdd } = props;
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props;
 
   return (
     <>
