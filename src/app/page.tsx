@@ -3,60 +3,14 @@
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Main } from "@/components/Main";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useBgLightblue } from "@/hooks/useBgLightblue";
+import { useCounter } from "@/hooks/useCounter";
+import { useInputArray } from "@/hooks/useInputArray";
 
 const Index: React.FC = () => {
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState<string[]>([]);
-
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    if (newValue.length > 5) {
-      return;
-    }
-    setText(e.target.value.trim());
-  }, []);
-
-  const bodyRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    console.log("foo");
-
-    bodyRef.current = document.body;
-    const body = bodyRef.current;
-    // console.log("マウント時");
-    if (body) {
-      body.style.backgroundColor = "lightblue";
-    }
-
-    return () => {
-      // console.log("アンマウント時");
-      if (body) {
-        body.style.backgroundColor = "";
-      }
-    };
-  }, [count]);
-
-  const handleClick = useCallback(() => {
-    if (count < 10) {
-      setCount((prevCount) => prevCount + 1);
-    }
-  }, [count]);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  }, [setIsShow]);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        console.log("既に存在します");
-        return prevArray;
-      }
-      return [...prevArray, text];
-    });
-  }, [setArray, text]);
+  const [count, isShow, handleClick, handleDisplay] = useCounter();
+  const [text, array, handleChange, handleAdd] = useInputArray();
+  useBgLightblue();
 
   return (
     <>
